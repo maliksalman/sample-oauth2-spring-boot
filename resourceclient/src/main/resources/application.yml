@@ -1,0 +1,27 @@
+server:
+  port: 8083
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          grp_write_client:
+            provider: uaa
+            client-id: grp_write_client
+            client-secret: svc_secret
+            authorization-grant-type: client_credentials
+            scope: grp-read-write
+          grp_read_client:
+            provider: uaa
+            client-id: grp_read_client
+            client-secret: svc_secret
+            authorization-grant-type: client_credentials
+            scope: grp-read-only
+        provider:
+          uaa:
+            authorization-uri: http://localhost:8080/oauth/auth
+            token-uri: http://localhost:8080/oauth/token
+
+resources:
+  base-uri: http://localhost:8082

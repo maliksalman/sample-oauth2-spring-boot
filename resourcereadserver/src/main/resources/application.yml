@@ -1,0 +1,24 @@
+server:
+  port: 8092
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          grp_read_svc:
+            provider: uaa
+            client-id: grp_read_svc
+            client-secret: svc_secret
+            authorization-grant-type: client_credentials
+            scope: grp-read-only-svc
+        provider:
+          uaa:
+            authorization-uri: http://localhost:8080/oauth/auth
+            token-uri: http://localhost:8080/oauth/token
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/oauth/token
+
+resources:
+  base-uri: http://localhost:8082

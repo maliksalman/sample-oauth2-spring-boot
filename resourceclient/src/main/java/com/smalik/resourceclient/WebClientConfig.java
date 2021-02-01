@@ -15,12 +15,12 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class WebClientConfig {
 
     @Bean("readClient")
-    public WebClient readClient(@Value("${resources.base-uri}") String baseUri, OAuth2AuthorizedClientManager authorizedClientManager) {
+    public WebClient readClient(@Value("${resources.base-read-uri}") String baseUri, OAuth2AuthorizedClientManager authorizedClientManager) {
         return createWebClient(baseUri, authorizedClientManager, "grp_read_client");
     }
 
     @Bean("writeClient")
-    public WebClient writeClient(@Value("${resources.base-uri}") String baseUri, OAuth2AuthorizedClientManager authorizedClientManager) {
+    public WebClient writeClient(@Value("${resources.base-write-uri}") String baseUri, OAuth2AuthorizedClientManager authorizedClientManager) {
         return createWebClient(baseUri, authorizedClientManager, "grp_write_client");
     }
 

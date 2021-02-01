@@ -1,4 +1,4 @@
-package com.smalik.resourceserver;
+package com.smalik.resourcereadserver;
 
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,13 +11,12 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
    @Override
    protected void configure(HttpSecurity http) throws Exception {
       http
-        .authorizeRequests(requests ->
+           .authorizeRequests(requests ->
                 requests
-                        .antMatchers("/actuator/**").permitAll()
-                        .antMatchers(HttpMethod.GET, "/hero/**").hasAuthority("SCOPE_grp-read-only-svc")
-                        .antMatchers(HttpMethod.POST, "/hero/**").hasAuthority("SCOPE_grp-read-write-client")
-                        .anyRequest().authenticated())
-        .oauth2ResourceServer(server ->
-                server.jwt());
+                     .antMatchers(HttpMethod.GET, "/hero").hasAuthority("SCOPE_grp-read-only-client")
+                     .anyRequest().authenticated())
+           .oauth2ResourceServer(server ->
+                server.jwt())
+           .oauth2Client();
    }
 }

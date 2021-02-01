@@ -11,17 +11,18 @@ spring:
             client-id: grp_write_client
             client-secret: svc_secret
             authorization-grant-type: client_credentials
-            scope: grp-read-write
+            scope: grp-read-write-client
           grp_read_client:
             provider: uaa
             client-id: grp_read_client
             client-secret: svc_secret
             authorization-grant-type: client_credentials
-            scope: grp-read-only
+            scope: grp-read-only-client
         provider:
           uaa:
             authorization-uri: http://localhost:8080/oauth/auth
             token-uri: http://localhost:8080/oauth/token
 
 resources:
-  base-uri: http://localhost:8082
+  base-read-uri: http://localhost:8092
+  base-write-uri: http://localhost:8082

@@ -7,21 +7,21 @@ spring:
       client:
         registration:
           grp_write_client:
-            provider: uaa
+            provider: myrealm
             client-id: grp_write_client
-            client-secret: svc_secret
+            client-secret: 1wmLmnO9BQ3GPsHPDxn4p7r8hN1tgL8z
             authorization-grant-type: client_credentials
             scope: grp-read-write-client
           grp_read_client:
-            provider: uaa
+            provider: myrealm
             client-id: grp_read_client
-            client-secret: svc_secret
+            client-secret: 37clKnGG8vQu5XaLLYsnAWoMz2n1tfs7
             authorization-grant-type: client_credentials
             scope: grp-read-only-client
         provider:
-          uaa:
-            authorization-uri: http://localhost:8080/oauth/auth
-            token-uri: http://localhost:8080/oauth/token
+          myrealm:
+            authorization-uri: http://localhost:4040/realms/myrealm/protocol/openid-connect/auth
+            token-uri: http://localhost:4040/realms/myrealm/protocol/openid-connect/token
 
 resources:
   base-read-uri: http://localhost:8092

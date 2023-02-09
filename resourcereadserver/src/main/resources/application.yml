@@ -7,18 +7,18 @@ spring:
       client:
         registration:
           grp_read_svc:
-            provider: uaa
+            provider: myrealm
             client-id: grp_read_svc
-            client-secret: svc_secret
+            client-secret: L9ubOmq5IXzGcemlh8IOblRjPe8yKklX
             authorization-grant-type: client_credentials
             scope: grp-read-only-svc
         provider:
           uaa:
-            authorization-uri: http://localhost:8080/oauth/auth
-            token-uri: http://localhost:8080/oauth/token
+            authorization-uri: http://localhost:4040/realms/myrealm/protocol/openid-connect/auth
+            token-uri: http://localhost:4040/realms/myrealm/protocol/openid-connect/token
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/oauth/token
+          issuer-uri: http://localhost:4040/realms/myrealm
 
 resources:
   base-uri: http://localhost:8082
